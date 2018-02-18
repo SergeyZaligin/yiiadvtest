@@ -51,6 +51,8 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'blog' => 'blog/index',
+                'blog/<id:\d+>' => 'blog/view',
                 '' => 'site/index',
                 '<controller:\w+]>/<action:\w+>/' => '<controller>/<action>',
             ],
