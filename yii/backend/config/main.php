@@ -9,7 +9,10 @@ $params = array_merge(
 return [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log','gii'],
+    'controllerNamespace' => 'backend\controllers',
+    'language' => 'ru-RU',
+    'defaultRoute' => 'blog/index',
+    'bootstrap' => ['log','gii', 'debug'],
     'modules' => [
         'gii' => [
             'class' => 'yii\gii\Module',
@@ -18,11 +21,14 @@ return [
             'class' => 'yii\debug\Module',
         ],
     ],
-    'controllerNamespace' => 'backend\controllers',
-    'language' => 'ru-RU',
-    'defaultRoute' => 'blog/index',
-    'modules' => [],
     'components' => [
+        'view' => [
+                'theme' => [
+                    'pathMap' => [
+                       '@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app'
+                    ],
+                ],
+           ],
         'request' => [
             'csrfParam' => '_csrf-backend',
         ],
