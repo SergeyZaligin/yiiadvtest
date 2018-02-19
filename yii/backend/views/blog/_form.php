@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use vova07\imperavi\Widget;
+use common\models\Blog;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Blog */
@@ -30,7 +31,7 @@ use vova07\imperavi\Widget;
 
     <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status_id')->dropDownList(['1' => 'Активна', '0' => 'Неактивна']) ?>
+    <?= $form->field($model, 'status_id')->dropDownList(Blog::getStatusList()) ?>
 
     <?= $form->field($model, 'sort')->textInput() ?>
 

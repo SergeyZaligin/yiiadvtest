@@ -28,7 +28,7 @@ class BlogController extends Controller
             ],
         ];
     }
-
+    
     /**
      * Lists all Blog models.
      * @return mixed
@@ -37,7 +37,24 @@ class BlogController extends Controller
     {
         $searchModel = new BlogSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        
+//        for($i = 0; $i < 30; $i++)
+//        {
+//            $model = new Blog();
+//            $model->title = "Тайтл поста № {$i}";
+//            $model->sort = 50;
+//            $model->status_id = 1;
+//            $model->url = "url_{$i}";
+//            $model->text = "Проснувшись однажды утром после беспокойного сна, "
+//                    . "Грегор Замза обнаружил, что он у себя в постели превратился в "
+//                    . "страшное насекомое. Лежа на панцирнотвердой спине, он видел, "
+//                    . "стоило ему приподнять голову, свой коричневый, выпуклый, "
+//                    . "разделенный дугообразными чешуйками живот, "
+//                    . "на верхушке которого еле держалось готовое вот-вот "
+//                    . "окончательно сползти одеяло. ";
+//            $model->save();
+//        }
+        
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

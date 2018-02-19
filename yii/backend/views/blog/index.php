@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use common\models\Blog;
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\BlogSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -23,18 +24,37 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
             'title',
             //'text:ntext',
-            'url:url',
-            'status_id',
+            //'url:url',
+            [
+              'attribute' => 'url',
+              'format' => 'text',
+            ],
+            //'status_id',
+            [
+              'attribute' => 'status_id',
+              'filter'    => Blog::getStatusList(),
+              'value'     => 'statusName',
+            ],
             'sort',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view} {update} {delete} {check}',
+                'buttons' => [
+                    'check' => function($url, $model, $key){
+                        return Html::a("<li class='fa fa-check' aria-hidden='true'></li>", $url);
+                    }
+                ],
+            ],
         ],
+        
     ]); ?>
     <?php Pjax::end(); ?>
 </div>
