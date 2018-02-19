@@ -52,7 +52,7 @@ return [
             'showScriptName' => false,
             'rules' => [
                 'blog' => 'blog/index',
-                'blog/<id:\d+>' => 'blog/view',
+                'blog/<url>' => 'blog/view',
                 '' => 'site/index',
                 '<controller:\w+]>/<action:\w+>/' => '<controller>/<action>',
             ],

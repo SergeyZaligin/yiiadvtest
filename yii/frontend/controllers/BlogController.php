@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use Yii;
 use yii\web\Controller;
 use common\models\Blog;
+use yii\web\NotFoundHttpException;
 
 /**
  * Description of BlogController
@@ -15,13 +16,20 @@ class BlogController extends Controller
 {
     public function actionIndex() 
     {
-        $blog = Blog::find()->where(['status_id' =>1])->orderBy('sort')->all();
+        $blogs = Blog::find()->andWhere(['status_id' =>1])->orderBy('sort')->all();
         
-        return $this->render('index', ['blog' => $blog]);
+        return $this->render('index', ['blogs' => $blogs]);
     }
     
-    public function actionView() 
-    {
-        return $this->render('view');
+    public function actionView($url) 
+    {   
+        if($blog = Blog::find()->andWhere(['url' => $url])->one())
+        {
+            return $this->render('view', ['blog' => $blog]);
+        }
+        else 
+        {
+            throw new NotFoundHttpException();
+        }
     }
 }
