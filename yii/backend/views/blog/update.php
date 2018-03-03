@@ -19,3 +19,8 @@ $this->params['breadcrumbs'][] = 'Update';
     ]) ?>
 
 </div>
+<div class="well">
+    <?php foreach ($model->tags as $item) : ?>
+    <?= $item->name;?> <br>
+    <?php endforeach; ?>
+</div>

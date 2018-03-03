@@ -39,11 +39,13 @@ $this->params['breadcrumbs'][] = $this->title;
             //'status_id',
             [
               'attribute' => 'status_id',
-              'filter'    => Blog::getStatusList(),
+              'filter'    => Blog::STATUS_LIST ,
               'value'     => 'statusName',
             ],
             'sort',
-
+            'date_create',
+            'date_update',
+            ['attribute' => 'tags', 'value' => 'tagsAsString'],
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{view} {update} {delete} {check}',
