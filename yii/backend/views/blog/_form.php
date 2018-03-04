@@ -7,6 +7,8 @@ use common\models\Blog;
 use common\models\Tag;
 use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
+use yii\helpers\Url;
+
 /* @var $this yii\web\View */
 /* @var $model common\models\Blog */
 /* @var $form yii\widgets\ActiveForm */
@@ -23,6 +25,7 @@ use kartik\select2\Select2;
             'settings' => [
                 'lang' => 'ru',
                 'minHeight' => 200,
+                'imageUpload' => Url::to(['/site/save-redactor-image', 'sub' => 'blog']),
                 'plugins' => [
                     'clips',
                     'fullscreen',
